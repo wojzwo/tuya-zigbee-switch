@@ -258,5 +258,6 @@ Support new devices: [contribute/porting.md](/docs/contribute/porting.md)
 | 🟩 | ✔️ | 🇸 | 🔌 | ➿ | **SL** | `_TZ3000_ilauzyjm` <br> `TS0011` | [Zemismart 1-gang switch 🅱](https://www.zigbee2mqtt.io/devices/TS0011.html) | [`Store`](https://www.zemismart.com/products/kes-606us-z?VariantsId=14159) | [`#022`](https://github.com/romasku/tuya-zigbee-switch/issues/22) | Supported | 
 | 🟩 | ✔️ | 🇸 | 🔌 | ➿ | **SL** | `_TZ3000_rbl8c85w` <br> `TS0012` | [Zemismart 2-gang switch 🅱](https://www.zigbee2mqtt.io/devices/TS0012.html) | [`Store`](https://www.zemismart.com/products/kes-606us-z?VariantsId=14160) | [`#022`](https://github.com/romasku/tuya-zigbee-switch/issues/22) | Supported | 
 | 🟧 | ❌️ | 🇸 | 🔌 | 🛜 | **TL** | `_TZE200_r731zlxk` <br> `TS0601` | [Zemismart TB26-6](https://www.zigbee2mqtt.io/devices/TB26-6.html) | [`Store`](https://www.zemismart.com/products/tb26-6) | [`#209`](https://github.com/romasku/tuya-zigbee-switch/issues/209) | Needs pinout. Secondary MCU. 6-gang! | 
+| 🟧 | ✔️ | 🇲 | 🔌 | 🛜 | **TL** | `_TZ3000_n1j44rth` <br> `TS0002` | [Tuya 2CH Mini Smart Switch](https://www.zigbee2mqtt.io/devices/TS0002.html) |   |   | Needs testing | 
 
 Data from [`device_db.yaml`](/device_db.yaml)

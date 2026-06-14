@@ -2780,5 +2780,19 @@
       "_TZ3000_rbl8c85w",
       "rbl8c85w"
     ]
+  },
+  {
+    "fileName": "tlc_switch-1.1.2-33079dc6-forced.zigbee",
+    "fileVersion": 4294967295,
+    "fileSize": 180994,
+    "url": "https://github.com/wojzwo/tuya-zigbee-switch/raw/refs/heads/port-n1j44rth/bin/router/MODULE_TUYA_N1J44RTH_TS0002/tlc_switch-1.1.2-33079dc6-forced.zigbee",
+    "imageType": 43620,
+    "manufacturerCode": 4417,
+    "sha512": "ad9412b50e5b89a9187cafe72519ddcea7e889e2376ca80e04d5f7baf2639b5d94cc8c613cd9c6772238aaefd397d247bc18ec5b08bccf1c802cc0ff013ebbd3",
+    "otaHeaderString": "Telink OTA Image\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+    "manufacturerName": [
+      "_TZ3000_n1j44rth",
+      "n1j44rth"
+    ]
   }
 ]
