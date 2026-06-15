@@ -6086,7 +6086,7 @@ SWITCH_ZEMISMART_TS0601_6GANG:
   threads: https://github.com/romasku/tuya-zigbee-switch/issues/209
   store: https://www.zemismart.com/products/tb26-6
 
-MODULE_TUYA_N1J44RTH_TS0002:
+MODULE_TUYA_MINI_TS0002:
   human_name: Tuya 2CH Mini Smart Switch
   category: module
   power: mains
@@ -6100,7 +6100,7 @@ MODULE_TUYA_N1J44RTH_TS0002:
   stock_converter_model: TS0002
   override_z2m_device: TS0002_basic_2
 
-  tuya_module: null
+  tuya_module: ZT2S_real
   mcu_family: Telink
   mcu: TLSR8258
 
@@ -6111,7 +6111,7 @@ MODULE_TUYA_N1J44RTH_TS0002:
 
   stock_manufacturer_id: 4417
   stock_image_type: 54179
-  firmware_image_type: 43620
+  firmware_image_type: 47112
 
   build: yes
   status: in_progress
@@ -6121,7 +6121,7 @@ MODULE_TUYA_N1J44RTH_TS0002:
 
 
 
-MODULE_TUYA_UWHJGNGJ_TS0003:
+MODULE_TUYA_MINI_TS0003:
   human_name: Tuya 3CH Mini Smart Switch
   category: module
   power: mains
@@ -6135,7 +6135,7 @@ MODULE_TUYA_UWHJGNGJ_TS0003:
   stock_converter_model: TS0003
   override_z2m_device: TS0003_switch_module_1
 
-  tuya_module: null
+  tuya_module: ZT2S_real
   mcu_family: Telink
   mcu: TLSR8258
 
@@ -6146,7 +6146,7 @@ MODULE_TUYA_UWHJGNGJ_TS0003:
 
   stock_manufacturer_id: 4417
   stock_image_type: 54179
-  firmware_image_type: 43621
+  firmware_image_type: 47113
 
   build: yes
   status: in_progress
