@@ -548,6 +548,7 @@ CONFIGS = [
     "ilauzyjm;TS0011-ZS;SB0u;RD1A4;IA6;M;",
     "rbl8c85w;TS0012-ZS;SA0u;RD1A4;IC1;SB1u;RC0C2;IA5;M;",
     "n1j44rth;TS0002-N1J44RTH;BB4u;LD2i;SC2u;RC4;SC3u;RB5;",
+    "uwhjgngj;TS0003-UWHJGNGJ;BB1u;LB7i;SC2u;RB4;SC3u;RB5;SD2u;RC4;",
 ]
 
 for config in CONFIGS:
