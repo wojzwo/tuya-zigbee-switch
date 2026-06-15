@@ -6145,7 +6145,7 @@ MODULE_TUYA_UWHJGNGJ_TS0003:
   old_zb_models: null
 
   stock_manufacturer_id: 4417
-  stock_image_type: 65535
+  stock_image_type: 54179
   firmware_image_type: 43621
 
   build: yes
