@@ -1,0 +1,100 @@
+name: Build Single Board
+
+on:
+  workflow_dispatch:
+    inputs:
+      board:
+        description: 'Board name from device_db.yaml (e.g. SOCKET_MOES_ZK_EU16M)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y make python3 yq unzip wget gcc-arm-none-eabi
+
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: 21
+
+    - name: Cache Silicon Labs Tools
+      uses: actions/cache@v4
+      with:
+        path: silabs_tools
+        key: silabs-tools-2025.6.2
+
+    - name: Cache Telink Tools
+      uses: actions/cache@v4
+      with:
+        path: telink_tools
+        key: telink-tools-v3.7.2.0
+
+    - name: Cache Python Virtual Environment
+      uses: actions/cache@v4
+      with:
+        path: .venv
+        key: python-venv-${{ hashFiles('requirements.txt') }}
+
+    - name: Install SDK and Toolchain
+      run: |
+        make setup || (
+          echo "dumping log:" &&
+          cat /home/runner/work/tuya-zigbee-switch/tuya-zigbee-switch/silabs_tools/slc-cli/bin/slc-cli/configuration/*.log
+        )
+
+    - name: Build board
+      run: |
+        source .venv/bin/activate
+        BOARD="${{ inputs.board }}"
+        TYPE=$(yq -r ".\"$BOARD\".device_type" device_db.yaml)
+        BUILD=$(yq -r ".\"$BOARD\".build" device_db.yaml)
+
+        if [ "$BUILD" = "no" ]; then
+          echo "Build is disabled for $BOARD in device_db.yaml"
+          exit 1
+        fi
+
+        echo "Building $BOARD (router)"
+        BOARD="$BOARD" DEVICE_TYPE=router make board/build
+        ls -l bin/router/$BOARD/
+
+        if [ "$TYPE" = "end_device" ]; then
+          echo "Building $BOARD (end_device)"
+          BOARD="$BOARD" DEVICE_TYPE=end_device make board/build
+          ls -l bin/end_device/${BOARD}_END_DEVICE/
+        fi
+
+    - name: Update converters and quirks
+      run: |
+        source .venv/bin/activate
+        make tools/update_converters
+        make tools/update_zha_quirk
+        make tools/update_homed_extension
+        make tools/update_supported_devices
+
+    - name: Commit and push
+      run: |
+        source .venv/bin/activate
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add bin/ zigbee2mqtt/ zha/ homed/ docs/supported_devices.md
+        git diff --cached --quiet || git commit -m "Build ${{ inputs.board }} firmware"
+        make tools/freeze_ota_links
+        git add zigbee2mqtt/
+        git diff --cached --quiet || git commit -m "Freeze OTA links"
+        git push
